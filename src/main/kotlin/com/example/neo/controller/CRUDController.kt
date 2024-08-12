@@ -1,10 +1,9 @@
 package com.example.neo.controller
 
 import com.example.neo.dto.CRUDDto
+import com.example.neo.entity.CRUDEntity
 import com.example.neo.service.CRUDService
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 
 @RestController
@@ -25,6 +24,20 @@ class CRUDController(
         @RequestBody body: CRUDDto
     ){
         crudService.create(body)
+    }
+
+    @GetMapping("/read/all")
+    fun readAll(): List<CRUDDto> {
+        return crudService.readAll()
+    }
+
+    // localhost:8080/read/{id} = 1 or 2
+    // localhost:8080/read/2
+    @GetMapping("/read/{id}")
+    fun readById(
+        @PathVariable id: Long
+    ): CRUDDto {
+        return crudService.readById(id)
     }
 
 
