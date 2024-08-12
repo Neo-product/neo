@@ -1,7 +1,6 @@
 package com.example.neo.controller
 
 import com.example.neo.dto.CRUDDto
-import com.example.neo.entity.CRUDEntity
 import com.example.neo.service.CRUDService
 import org.springframework.web.bind.annotation.*
 
@@ -38,6 +37,14 @@ class CRUDController(
         @PathVariable id: Long
     ): CRUDDto {
         return crudService.readById(id)
+    }
+
+    // localhost:8080/update
+    @PatchMapping("/update")
+    fun update(
+        @RequestBody dto: CRUDDto
+    ) {
+        crudService.update(dto)
     }
 
 

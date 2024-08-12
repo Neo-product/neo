@@ -41,4 +41,16 @@ class CRUDService (
         return toDto(crudRepository.findById(id).get())
     }
 
+    fun update(dto: CRUDDto){
+        val crudEntity = crudRepository.findById(dto.id).get()
+
+
+        crudEntity.update(
+            title = dto.title,
+            content = dto.content
+        )
+
+        crudRepository.save(crudEntity)
+    }
+
 }
