@@ -47,5 +47,14 @@ class CRUDController(
         crudService.update(dto)
     }
 
+    // localhost:8080/delete/{id}
+    // localhost:8080/delete/1
+    @DeleteMapping("/delete/{id}")
+    fun delete(
+        @PathVariable id: Long
+    ) {
+        crudService.deleteById(id)
+    }
+
 
 }
